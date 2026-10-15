@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
 * {
-    font-family: "Figtree", sans-serif;
+    font-family: "Golos Text", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400;
     font-style: normal;
     padding: 0;
     margin: 0;
@@ -12,12 +10,14 @@
 .app.light {
     background-color: rgb(240, 240, 240);
     color: rgb(11, 11, 11);
+    min-height: 100vh;
     transition: all 0.2s ease;
 }
 
 .app.dark {
-    background-color: rgb(11, 11, 11);
+    background-color: rgb(0,0,0);
     color: rgb(240, 240, 240);
+    min-height: 100vh;
     transition: all 0.2s ease;
 }
 
@@ -59,12 +59,13 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.2em;
-    font-weight: 900;
-    transform: background-color 0.2s ease;
+    font-weight: bold;
+    transform: all 0.2s ease;
 }
 
 .navbar.scrolled {
-    background-color: gray;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
 }
 
 .logo {
@@ -95,10 +96,12 @@
 }
 
 .trending-banner {
-    width: 100%;
+    width: inherit;
     height: 70vh;
+    overflow: hidden;
     background-size: cover;
-    background-position: 'center';
+    background-repeat: no-repeat;
+    background-position: center top;
     display: flex;
     align-items: flex-end;
     padding: 3rem;
@@ -116,4 +119,89 @@
 
 .trending-banner-desc p {
     line-height: 24px;
+}
+
+.trending-container h2{
+    margin: 0 3rem;    
+}
+
+.trending-list {
+
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 24px;
+}
+
+.trending-card {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.trending-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(47, 0, 0, 0.978);
+}
+
+.trending-card img {
+    width: 280px;    
+    border-radius: 24px;
+}
+
+.trending-rank {
+    font-size: 1.8em;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 16px 14px;
+    color: rgb(223, 0, 0);
+    border: 2px solid rgb(223, 0, 0);
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 12px;
+}
+
+.trending-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to top, black, rgba(0,0,0,0.8),rgba(0,0,0,0.5), transparent);
+    width: calc(100% - 40px);
+    height: 80px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.trending-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.trending-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+}
+
+.trending-year {
+    color: rgb(222, 222, 222);
+    font-size: 0.8em;
+}
+
+.trending-rating {
+    font-size: 0.8em;
+    border: 1px solid white;
+    padding: 4px 6px;
+    border-radius: 12px;
+    background-color: rgb(170, 0, 0);
+}
+
+.trending-genres {
+    font-size: 0.8em;
 }

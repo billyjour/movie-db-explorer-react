@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchTrendingMovies } from "../services/tmdbAPI";
-import { BACKDROP_BASE_URL } from "../services/tmdbAPI";
+import { BACKDROP_BASE_URL } from "../utils/format";
 
 export default function TrendingBanner() {
 

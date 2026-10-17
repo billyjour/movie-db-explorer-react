@@ -1,8 +1,6 @@
 const API_KEY = `0e9dd205b7d99db6f2c3450ce3d0dedc`;
 const BASE_URL = "https://api.themoviedb.org/3";
 
-
-
 export const fetchTrendingMovies = async () => {
     try {
         const res = await fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
@@ -26,3 +24,20 @@ export const fetchGenres = async () => {
         return {}; 
     }
 }
+
+export const fetchRandomMovies = async () => {
+    try {
+        const randomPage = Math.floor(Math.random() * 10) + 1;
+        let url = `${BASE_URL}/discover/movie?language=en&api_key=${API_KEY}&page=${randomPage}`;
+        
+        // filter (sort & genre)
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Failed to fetch data');
+        const data = await res.json();
+        return data.results;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+} 

@@ -17,7 +17,7 @@ export default function Navbar() {
     }, [])
     return(
         <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-            <span className="logo">CineJour</span>
+            <span className="logo"><Link to="/">CineJour</Link></span>
             <div className="nav-links">
                 <Link to="/">Home</Link>
                 <Link to="/top-rated">Top Rated</Link>

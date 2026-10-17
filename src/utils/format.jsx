@@ -13,6 +13,8 @@ export const getGenres = (genreIds = [], genreMap = {}) => {
     const names = genreIds.slice(0, 2).map((id) => genreMap[id]).filter(Boolean);
     return names.length ? names.join(', ') : 'N/A';
 }
+export const getOverview = (overview) => overview ?? 'N/A'; 
+
 
 
 

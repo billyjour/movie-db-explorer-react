@@ -4,31 +4,39 @@ import { BACKDROP_BASE_URL } from "../utils/format";
 
 export default function TrendingBanner() {
 
-    const [movie, setMovie] = useState(null);
+    const [movies, setMovies] = useState([]);
+    const [index, setIndex] = useState(0);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function loadBannerData() {
             const movies = await fetchTrendingMovies();
-            if (movies.length > 0) setMovie(movies[1]);
+            setMovies(movies);
             setLoading(false);
         }
-
         loadBannerData();
     }, []);
 
-    if(loading) return <p>Load . . .</p>;
-    if(!movie) return <p style={{ color: 'white' }}>Film load...</p>;
+    useEffect(() => {
+        if (movies.length === 0) return;
+        const interval = setInterval(() => {
+            setIndex((i) => (i + 1) % movies.length);
+        }, 5000)
+        return () => clearInterval(interval);
+    }, [movies])
+
+    const movie = movies[index];
+    if(loading) return <p className="load-movies">Load . . .</p>;
+    if(!movies) return <p className="load-movies" style={{ color: 'white' }}>Film load...</p>;
     
     const backdropURL = movie.backdrop_path ? `${BACKDROP_BASE_URL}w1280${movie.backdrop_path}` : "";
     return (
-        <div className="trending-banner"
+        <div className="trending-banner" key={movie.id}
         style={{backgroundImage: `linear-gradient(to top, rgb(0,0,0), rgba(0,0,0,0.4)), url(${backdropURL})`}}>
             <div className="trending-banner-desc">
                 <h1>{movie.title}</h1>
                 <p>{movie.overview}</p>
             </div>
         </div>
-        
     )
 }

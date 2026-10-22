@@ -92,12 +92,12 @@
     text-decoration: none;
     color: inherit;
     padding: 12px 8px;
-    transition: all 0.2s ease;
     color: rgb(170, 0, 0); 
-    box-shadow: 0 0 rgb(170, 0, 0); 
+    box-shadow: 0 0 rgb(170, 0, 0);     
+    transition: all 0.2s ease;
 }
 
-.nav-links a:focus {
+.nav-links a.active {
     box-shadow: 0 4px rgb(170, 0, 0); 
     transition: all 0.2s ease;
 }

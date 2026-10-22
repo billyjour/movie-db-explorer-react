@@ -1,13 +1,12 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { fetchGenres, fetchTrendingMovies, fetchRandomMovies, handleSearch, loadGenres, fetchSearchMovies } from "../services/tmdbAPI";
 import TrendingBanner from "../components/TrendingBanner"
-import { fetchGenres, fetchTrendingMovies, fetchRandomMovies } from "../services/tmdbAPI";
 import TrendingCard from "../components/TrendingCard";
 import MovieCard from "../components/MovieCard";
 import Searchbar from "../components/Searchbar";
 import useSearchFilter from "../hooks/UseSearchFilter";
-import { handleSearch } from "../services/tmdbAPI";
-import { loadGenres } from "../services/tmdbAPI";
-import { fetchSearchMovies } from "../services/tmdbAPI";
+import Button from "../components/Button";
+
 export default function Home() {
 
     const [trendingMovies, setTrendingMovies] = useState([]);
@@ -16,6 +15,15 @@ export default function Home() {
     const [genreMap, setGenreMap] = useState({});
     const [genresOpt, setGenresOpt] = useState({});
     const {searchTerm, genre, year, sortBy, isSearching, handleChange} = useSearchFilter(handleSearch);
+
+    const movieListRef = useRef(null);
+
+    const scroll = (dir) => {
+        movieListRef.current.scrollBy({ 
+            left: (dir === "right" ? 400 : -400),
+            behavior: "smooth"
+        });
+    };
 
     useEffect(() => {
         fetchTrendingMovies().then(setTrendingMovies);
@@ -29,7 +37,7 @@ export default function Home() {
             return;
         }        
         fetchSearchMovies({ searchTerm, sortBy, genre, year }).then(setSearchMovies);
-    }, [isSearching, searchTerm, sortBy, genre, year])
+    }, [isSearching, searchTerm, sortBy, genre, year]);
 
     useEffect(() => {
         fetchRandomMovies({ sortBy, genre, year }).then(setDiscoverMovies);
@@ -48,7 +56,8 @@ export default function Home() {
             />
             {(!isSearching && !sortBy && !genre && !year ) && <div className="trending-container">
                 <h2><i className="bi bi-fire"></i> Trending Movies</h2>
-                <div className="trending-list">
+                <Button onClick={() => scroll("right")} variant="next"><i class="bi bi-caret-right"></i></Button>
+                <div className="trending-list" ref={movieListRef}>
                     {trendingMovies.slice(0, 10).map((movie, index) => (
                         <TrendingCard
                             key={movie.id}
@@ -58,6 +67,7 @@ export default function Home() {
                         />
                     ))}
                 </div>
+                <Button onClick={() => scroll("left")} variant="prev"><i className="bi bi-caret-left"></i></Button>
             </div>}
 
             { !isSearching && 

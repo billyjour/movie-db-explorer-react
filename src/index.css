@@ -52,7 +52,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 9999;
     padding: 16px 12px;
     display: flex;
     flex-direction: row;
@@ -130,7 +130,6 @@
     from { opacity: 0; }
     to   { opacity: 1; }
 }
-
 
 .trending-banner-desc {
     font-weight: bold;
@@ -437,11 +436,90 @@
     transition: all 0.2s ease;
 }
 
-.btn-next {left: 4px;}
-.btn-prev {right: 4px;}
+.btn-next {right: 4px;}
+.btn-prev {left: 4px;}
 
 .btn-next:hover, .btn-prev:hover {
     background-color: rgba(170, 0, 0, 0.5);
     transform: scale(1.1);
 
+}
+
+.modal-pop-up-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-pop-up {
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    color: rgb(240, 240, 240);
+    font-weight: bold;
+    padding-top: 11%;
+    width: 100%;
+    border-radius: 20px;
+    height: 100%;
+}
+
+.btn-close {
+    position: absolute;
+    right: 40px;
+    background-color: transparent;
+    color: rgb(240, 240, 240);
+    font-size: 2.4em;
+    border: none;
+}
+
+.selected-card {
+    cursor: pointer;
+    transition: all 0.2s ease; 
+    min-width: 300px;            
+    height: 450px; 
+    border-radius: 24px;
+    overflow: hidden;  
+}
+
+.selected-card:hover {
+    transform: scale(1.05);
+}
+
+.selected-card img {
+    width: 100%;
+    height: 100%;    
+    object-fit: cover;
+    transition: all 0.3s ease;    
+}
+
+.selected-banner {
+    width: inherit;
+    height: 70vh;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    display: flex;
+    align-items: flex-end;
+    padding: 3rem;
+    color: white;
+    animation: bannerFade 0.8s ease;
+}
+
+.selected-banner-desc {
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-right: 12em;
+}
+
+.selected-movie-desc {
+    line-height: 1.6;
 }

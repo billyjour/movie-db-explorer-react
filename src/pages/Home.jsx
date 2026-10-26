@@ -20,7 +20,7 @@ export default function Home() {
 
     const scroll = (dir) => {
         movieListRef.current.scrollBy({ 
-            left: (dir === "right" ? 400 : -400),
+            left: (dir === "left" ? 400 : -400),
             behavior: "smooth"
         });
     };
@@ -56,7 +56,7 @@ export default function Home() {
             />
             {(!isSearching && !sortBy && !genre && !year ) && <div className="trending-container">
                 <h2><i className="bi bi-fire"></i> Trending Movies</h2>
-                <Button onClick={() => scroll("right")} variant="next"><i class="bi bi-caret-right"></i></Button>
+                <Button onClick={() => scroll("right")} variant="prev"><i className="bi bi-caret-left"></i></Button>
                 <div className="trending-list" ref={movieListRef}>
                     {trendingMovies.slice(0, 10).map((movie, index) => (
                         <TrendingCard
@@ -67,7 +67,8 @@ export default function Home() {
                         />
                     ))}
                 </div>
-                <Button onClick={() => scroll("left")} variant="prev"><i className="bi bi-caret-left"></i></Button>
+                <Button onClick={() => scroll("left")} variant="next"><i class="bi bi-caret-right"></i></Button>
+
             </div>}
 
             { !isSearching && 

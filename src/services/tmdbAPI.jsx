@@ -106,6 +106,18 @@ export const fetchTopRatedMovies = async (page) => {
     }
 }
 
+export const fetchUpcomingMovies = async (page) => {
+    try {
+        const res = await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`);
+        if (!res.ok) throw new Error('Failed to fetch data');
+        const data = await res.json();
+        return data.results;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
 const sortMovies = (movies, sortBy) => {
     switch(sortBy){
         case "popularity.desc":

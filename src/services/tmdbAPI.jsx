@@ -118,6 +118,19 @@ export const fetchUpcomingMovies = async (page) => {
     }
 }
 
+export const fetchSelectedTrailerMovies = async (movie_id) => {
+    try {
+        const res = await fetch(`${BASE_URL}/movie/${movie_id}/videos?api_key=${API_KEY}`);
+        if (!res.ok) throw new Error('Failed to fetch data');
+        const data = await res.json();
+        const trailer = data.results.find(v => v.site === "YouTube" && v.type === "Trailer" && v.official) || data.results.find(v => v.site === "YouTube" && v.type === "Trailer");
+        return trailer?.key ?? null;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
 const sortMovies = (movies, sortBy) => {
     switch(sortBy){
         case "popularity.desc":

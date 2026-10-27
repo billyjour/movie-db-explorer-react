@@ -6,7 +6,7 @@ import SelectedCard from "./SelectedCard";
 export default function MovieCard({movie, genreMap}) {
 
     const [viewId, setViewId] = useState(null);
-    const [selectedMovies, setSelectedMovies] = useState([]);
+    const [selectedMovies, setSelectedMovies] = useState(null);
 
     return (
         <>
@@ -34,9 +34,8 @@ export default function MovieCard({movie, genreMap}) {
             >  
                 <SelectedCard 
                     movie = {selectedMovies}
+                    genreMap={genreMap}
                 />
-
-
             </Modal>
         </>
     );    

@@ -136,7 +136,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-right: 12em;
+    margin-right: 10em;
 }
 
 .trending-banner-desc p {
@@ -157,9 +157,11 @@
     position: relative;
     padding: 2rem 3rem;
     display: flex;
-    flex-direction: row;
-    overflow-x: hidden;
-    gap: 24px;
+}
+
+.trending-list .swiper {
+    padding: 30px 20px 80px; 
+    margin: -30px -20px -80px;
 }
 
 .trending-card {
@@ -222,7 +224,6 @@
     justify-content: space-between;
     align-items: center;
     height: 20px;
-
 }
 
 .trending-year {
@@ -246,7 +247,7 @@
     margin: 40px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 12px;
     align-items: center;
 }
 
@@ -288,6 +289,14 @@
 
 .search-container .filters-container select:focus {
     border-color: rgb(223, 0, 0);
+}
+
+.btn-clear {
+    padding: 4px 6px;
+    color: rgb(240, 240, 240); 
+    border: 2px solid rgb(240, 240, 240);    
+    background-color: rgb(170, 0, 0);
+    width: 120px;
 }
 
 .discover-container {
@@ -372,7 +381,6 @@
     justify-content: space-between;
     align-items: center;
     height: 20px;
-
 }
 
 .discover-year {
@@ -466,7 +474,6 @@
     color: rgb(240, 240, 240);
     font-weight: bold;
     width: 100%;
-    border-radius: 20px;
     height: 100%;
 }
 
@@ -550,6 +557,11 @@
     padding: 1px 4px;
     border-radius: 12px;
     background-color: rgb(170, 0, 0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
 .selected-genres, .selected-overview {
@@ -599,4 +611,166 @@
     font-size: 40px;
     line-height: 1;
     cursor: pointer;    
+}
+
+@media screen and (max-width: 768px) {
+
+    .nav-links {
+        width: 500px;
+    }
+
+    .trending-banner-desc {
+        margin-right: 2em;
+    }
+
+    .trending-banner-desc h1 {
+        font-size: 1.4em;
+    }
+
+    .trending-banner-desc p {
+        font-size: 1em;
+    }
+
+    .search-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .search-container input[type='text'] {
+        width: 100%;
+    }
+
+    .trending-card {
+        min-width: 200px;
+        height: 300px;    
+    }
+
+    .discover-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .discover-card {
+        height: 300px;    
+    }
+
+    .trending-rank {
+        font-size: 1.2em;
+        border-radius: 12px;
+    }    
+
+    .trending-title {
+        font-size: 0.9em;
+    }
+
+    .trending-details {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 20px;
+    }
+
+    .trending-year {
+        color: rgb(222, 222, 222);
+        font-size: 0.8em;
+    }
+
+    .trending-rating {
+        font-size: 0.65em;
+        border: 0.5px solid white;
+        padding: 2px 4px;
+        border-radius: 12px;
+        background-color: rgb(170, 0, 0);
+    }
+
+    .trending-genres {
+        font-size: 0.65em;
+    }
+
+    .discover-title {
+        font-size: 0.9em;
+    }
+
+    .discover-year {
+        font-size: 0.8em;
+    }
+
+    .discover-rating {
+        font-size: 0.65em;
+        border: 0.5px solid white;
+        padding: 2px 4px;
+        border-radius: 12px;
+        background-color: rgb(170, 0, 0);
+    }
+
+    .discover-genres {
+        font-size: 0.65em;
+    }
+
+    .discover-overview {
+        font-size: 0.8em;
+        line-clamp: 3;
+        -webkit-line-clamp: 3;  
+    }    
+
+    .selected-card {
+        cursor: pointer;
+        transition: all 0.2s ease; 
+        min-width: 300px;  
+        height: 450px; 
+        border-radius: 24px;
+        overflow: hidden;  
+    }
+    
+    .selected-card:hover {
+        transform: scale(1.05);
+    }
+    
+    .selected-card img {
+        width: 100%;
+        height: 100%;    
+        object-fit: cover;
+        transition: all 0.3s ease;    
+    }
+    
+    .selected-banner-desc {
+        font-weight: bold;
+        font-size: 0.8em;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        margin-right: 12em;
+    }
+    
+    .selected-title {
+        font-size: 2em;
+    }
+
+    .trailer-overlay iframe {
+        width: min(800px, 80vw);
+    }
+
+    .btn-trailer {
+        margin-top: 20px;
+        padding: 8px 12px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 20px;
+    }
+
+    .btn-trailer:hover {
+        transform: translateY(-4px);
+    }
+
+    .btn-trailer-close {
+        position: absolute;
+        top: 160px;
+        right: 50px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;    
+    }    
 }

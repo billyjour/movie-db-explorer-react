@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { fetchGenres, fetchTrendingMovies, fetchRandomMovies, handleSearch, loadGenres, fetchSearchMovies } from "../services/tmdbAPI";
-import TrendingBanner from "../components/TrendingBanner"
+import TrendingBanner from "../components/TrendingBanner";
 import TrendingCard from "../components/TrendingCard";
 import MovieCard from "../components/MovieCard";
 import Searchbar from "../components/Searchbar";
 import useSearchFilter from "../hooks/UseSearchFilter";
 import Button from "../components/Button";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 export default function Home() {
 
@@ -16,13 +18,11 @@ export default function Home() {
     const [genresOpt, setGenresOpt] = useState({});
     const {searchTerm, genre, year, sortBy, isSearching, handleChange, handleClear} = useSearchFilter(handleSearch);
 
-    const movieListRef = useRef(null);
+    const swiperRef = useRef(null);
 
     const scroll = (dir) => {
-        movieListRef.current.scrollBy({ 
-            left: (dir === "left" ? 400 : -400),
-            behavior: "smooth"
-        });
+        if (dir === "next") swiperRef.current?.slideNext();
+        else swiperRef.current?.slidePrev();
     };
 
     useEffect(() => {
@@ -57,26 +57,30 @@ export default function Home() {
             />
             {(!isSearching && !sortBy && !genre && !year ) && <div className="trending-container">
                 <h2><i className="bi bi-fire"></i> Trending Movies</h2>
-                <Button onClick={() => scroll("right")} variant="prev"><i className="bi bi-caret-left"></i></Button>
-                <div className="trending-list" ref={movieListRef}>
-                    {trendingMovies.slice(0, 10).map((movie, index) => (
-                        <TrendingCard
-                            key={movie.id}
-                            movie={movie}
-                            rank={index+1}
-                            genreMap={genreMap}
-                        />
-                    ))}
+                <Button onClick={() => scroll("prev")} variant="prev"><i className="bi bi-caret-left"></i></Button>
+                <div className="trending-list">
+                    <Swiper slidesPerView="auto" spaceBetween={16} grabCursor onSwiper={(swiper) => (swiperRef.current = swiper)}>
+                        {trendingMovies.slice(0, 10).map((movie, index) => (
+                            <SwiperSlide key={movie.id} style={{ width: "auto" }}>
+                                <TrendingCard
+                                    key={movie.id}
+                                    movie={movie}
+                                    rank={index+1}
+                                    genreMap={genreMap}
+                                />
+                            </SwiperSlide>
+
+                        ))}
+                    </Swiper>
                 </div>
-                <Button onClick={() => scroll("left")} variant="next"><i class="bi bi-caret-right"></i></Button>
+                <Button onClick={() => scroll("next")} variant="next"><i class="bi bi-caret-right"></i></Button>
 
             </div>}
 
             { !isSearching && 
             <div className="discover-container">
 
-                {(!sortBy && !genre && !year)   &&  <h2>Discover Movies</h2>}
-                {(sortBy  || genre  ||  year)   &&  <h2>Filtered Movies</h2>}
+                {(!sortBy && !genre && !year)? <h2>Discover Movies</h2> : <h2>Filtered Movies</h2>}
                 
                 <div className="discover-list">
                     {discoverMovies.map((movie) => (

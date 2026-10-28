@@ -23,8 +23,15 @@ export default function useSearchFilter(handleSearch) {
         if (type === "search")  setSearchTerm(value);      
         if (type === "genre")   setGenre(value);
         if (type === "year")    setYear(value);   
-        if (type === "sortBy")  setSortBy(value); 
-    };        
+        if (type === "sortBy")  setSortBy(value);
+    }; 
+    
+    const handleClear = () => {
+        setSearchTerm('');
+        setGenre('');
+        setYear('');
+        setSortBy('');
+    }
 
-    return {searchTerm, genre, year, sortBy, isSearching, handleChange};
+    return {searchTerm, genre, year, sortBy, isSearching, handleChange, handleClear};
 }

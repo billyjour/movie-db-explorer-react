@@ -14,7 +14,7 @@ export default function Home() {
     const [searchMovies, setSearchMovies]     = useState([]);
     const [genreMap, setGenreMap] = useState({});
     const [genresOpt, setGenresOpt] = useState({});
-    const {searchTerm, genre, year, sortBy, isSearching, handleChange} = useSearchFilter(handleSearch);
+    const {searchTerm, genre, year, sortBy, isSearching, handleChange, handleClear} = useSearchFilter(handleSearch);
 
     const movieListRef = useRef(null);
 
@@ -51,7 +51,8 @@ export default function Home() {
                 genre={genre}
                 year={year}
                 sortBy={sortBy}
-                handleChange={handleChange}   
+                handleChange={handleChange}
+                handleClear={handleClear}   
                 genresOpt={genresOpt}
             />
             {(!isSearching && !sortBy && !genre && !year ) && <div className="trending-container">

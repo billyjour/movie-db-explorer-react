@@ -1,6 +1,7 @@
 import { setUpYearFilter } from "../utils/format"
+import Button from "./Button"
 
-export default function Searchbar({searchTerm, genre, year, sortBy, handleChange, genresOpt}) {
+export default function Searchbar({searchTerm, genre, year, sortBy, handleChange, handleClear, genresOpt}) {
 
     return (
         <div className="search-container">
@@ -36,6 +37,8 @@ export default function Searchbar({searchTerm, genre, year, sortBy, handleChange
                     <option value="title.asc">A-Z</option>
                 </select>   
             </div>
+
+            { (searchTerm || genre || year || sortBy) && <Button onClick={() => handleClear()} variant={"clear"}>Clear All</Button>}
         </div>
 
     )

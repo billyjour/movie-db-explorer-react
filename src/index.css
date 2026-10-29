@@ -533,7 +533,6 @@
     display: flex;
     flex-direction: row;
     gap: 40px;
-    
     margin-right: 12em;
 }
 
@@ -631,14 +630,15 @@ footer div {
     justify-content: center;
     align-items: center;
     gap: 8px;
+    color: rgb(240, 240, 240);    
 }
 
 @media screen and (max-width: 768px) {
 
-    .nav-links                  { width: 500px;}
-    .trending-banner-desc       { margin-right: 2em; }
-    .trending-banner-desc h1    { font-size: 1.4em; }
-    .trending-banner-desc p     { font-size: 1em; }
+    .nav-links                  { width         : 500px; }
+    .trending-banner-desc       { margin-right  : 2em;   }
+    .trending-banner-desc h1    { font-size     : 1.4em; }
+    .trending-banner-desc p     { font-size     : 1em;   }
 
     .search-container {
         flex-direction: column;
@@ -788,7 +788,7 @@ footer div {
         gap: 12px;
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
-    
+
     .discover-card { height: 225px; }    
     .trending-overlay { height: 80px; }    
 
@@ -808,15 +808,15 @@ footer div {
     .discover-card .discover-overlay { height: 120px; }    
 
     .selected-card {
-        min-width: 200px;  
-        height: 300px; 
+        min-width: 150px;  
+        height: 225px; 
     }
         
     .selected-banner-desc {
         font-weight: bold;
         font-size: 0.7em;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 20px;
         margin-right: 6em;
     }
@@ -838,4 +838,5 @@ footer div {
 
     .btn-next, .btn-prev { display: none; }
     footer { font-size: 0.8em; }
+
 }

@@ -7,8 +7,6 @@ import { toTitleCase } from "../utils/format";
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const {theme, toggleTheme} = useTheme();
-    
-
 
     useEffect(() => {
         const handleScore = () => setScrolled(window.scrollY >= window.innerHeight/2);

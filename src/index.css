@@ -758,7 +758,12 @@ footer div {
 
 @media screen and (max-width: 480px) {
 
-    .navbar { font-size: 0.9em; }
+    .nav-links { width: auto; gap: 4px; margin-left: auto;}
+    .navbar { 
+        padding: 10px 2px; 
+        font-size: 0.8em; 
+        justify-content: start;
+    }
 
     .trending-banner {
         height: 40vh;
@@ -821,6 +826,8 @@ footer div {
 
     .btn.btn-theme {
         font-size: 0.8em;
+        width: 40px;
+        margin-right: 12px;
         border-radius: 8px;
     }
 

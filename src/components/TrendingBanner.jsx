@@ -26,8 +26,8 @@ export default function TrendingBanner() {
     }, [movies])
 
     const movie = movies[index];
-    if(loading) return <p className="load-movies">Load . . .</p>;
-    if(!movies) return <p className="load-movies" style={{ color: 'white' }}>Film load...</p>;
+    if(loading) return <p className="load-movies"><i class="bi bi-arrow-clockwise"></i></p>;
+    if(!movies) return <p className="load-movies" style={{ color: 'white' }}><i class="bi bi-arrow-clockwise"></i></p>;
     
     const backdropURL = movie.backdrop_path ? `${BACKDROP_BASE_URL}w1280${movie.backdrop_path}` : "";
     return (

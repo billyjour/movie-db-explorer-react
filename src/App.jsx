@@ -3,6 +3,7 @@ import Home from "./pages/Home"
 import TopRated from "./pages/TopRated"
 import Upcoming from "./pages/Upcoming"
 import { Routes, Route} from "react-router-dom"
+import Footer from "./components/Footer"
 function App() {
     return (
         <>
@@ -14,6 +15,7 @@ function App() {
                     <Route path="/upcoming" element={<Upcoming />}/>
                 </Routes>
             </div>
+            <Footer />
         </>        
         
     )

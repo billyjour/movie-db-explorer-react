@@ -783,7 +783,12 @@ footer div {
         height: 225px;    
     }
 
-    .discover-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .discover-list {
+        padding: 1.5rem 1rem;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    
     .discover-card { height: 225px; }    
     .trending-overlay { height: 80px; }    
 

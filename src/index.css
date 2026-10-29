@@ -108,9 +108,15 @@
     height: 240px;
     justify-content: center;
     align-items: center;
-    font-size: 6em;
-
+    font-size: 4em;
+    animation: loadAnimation 1s ease infinite;
 }
+
+@keyframes loadAnimation {
+    0%      {transform: rotate(  0deg);}
+    100%    {transform: rotate(360deg);}
+}
+
 
 .trending-banner {
     width: inherit;
@@ -613,54 +619,48 @@
     cursor: pointer;    
 }
 
+footer {
+    padding: 12px;
+    text-align: center;
+    background-color: rgb(170, 0, 0); 
+}
+
+footer div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
 @media screen and (max-width: 768px) {
 
-    .nav-links {
-        width: 500px;
-    }
-
-    .trending-banner-desc {
-        margin-right: 2em;
-    }
-
-    .trending-banner-desc h1 {
-        font-size: 1.4em;
-    }
-
-    .trending-banner-desc p {
-        font-size: 1em;
-    }
+    .nav-links                  { width: 500px;}
+    .trending-banner-desc       { margin-right: 2em; }
+    .trending-banner-desc h1    { font-size: 1.4em; }
+    .trending-banner-desc p     { font-size: 1em; }
 
     .search-container {
         flex-direction: column;
         gap: 20px;
     }
 
-    .search-container input[type='text'] {
-        width: 100%;
-    }
+    .search-container input[type='text'] { width: 100%; }
 
     .trending-card {
         min-width: 200px;
         height: 300px;    
     }
 
-    .discover-list {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-
-    .discover-card {
-        height: 300px;    
-    }
+    .discover-list { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    .discover-card { height: 300px; }
 
     .trending-rank {
         font-size: 1.2em;
         border-radius: 12px;
     }    
 
-    .trending-title {
-        font-size: 0.9em;
-    }
+    .trending-title { font-size: 0.9em; }
 
     .trending-details {
         display: flex;
@@ -683,17 +683,9 @@
         background-color: rgb(170, 0, 0);
     }
 
-    .trending-genres {
-        font-size: 0.65em;
-    }
-
-    .discover-title {
-        font-size: 0.9em;
-    }
-
-    .discover-year {
-        font-size: 0.8em;
-    }
+    .trending-genres    { font-size: 0.65em; }
+    .discover-title     { font-size: 0.9em; }
+    .discover-year      { font-size: 0.8em; }
 
     .discover-rating {
         font-size: 0.65em;
@@ -703,9 +695,7 @@
         background-color: rgb(170, 0, 0);
     }
 
-    .discover-genres {
-        font-size: 0.65em;
-    }
+    .discover-genres { font-size: 0.65em; }
 
     .discover-overview {
         font-size: 0.8em;
@@ -722,9 +712,7 @@
         overflow: hidden;  
     }
     
-    .selected-card:hover {
-        transform: scale(1.05);
-    }
+    .selected-card:hover { transform: scale(1.05); }
     
     .selected-card img {
         width: 100%;
@@ -742,13 +730,8 @@
         margin-right: 12em;
     }
     
-    .selected-title {
-        font-size: 2em;
-    }
-
-    .trailer-overlay iframe {
-        width: min(800px, 80vw);
-    }
+    .selected-title { font-size: 2em; }
+    .trailer-overlay iframe { width: min(800px, 80vw); }
 
     .btn-trailer {
         margin-top: 20px;
@@ -758,9 +741,7 @@
         border-radius: 20px;
     }
 
-    .btn-trailer:hover {
-        transform: translateY(-4px);
-    }
+    .btn-trailer:hover { transform: translateY(-4px); }
 
     .btn-trailer-close {
         position: absolute;
@@ -776,27 +757,20 @@
 }
 
 @media screen and (max-width: 480px) {
-    
-    .navbar {
-        font-size: 0.9em;
-    }
+
+    .navbar { font-size: 0.9em; }
 
     .trending-banner {
         height: 40vh;
         padding: 2rem;
     }    
 
-    .trending-banner-desc {
-        margin-right: 1em;
-    }
-
-    .trending-banner-desc h1 {
-        font-size: 1em;
-    }
+    .trending-banner-desc { margin-right: 1em; }
+    .trending-banner-desc h1 { font-size: 1em; }
 
     .trending-banner-desc p {
-        font-size: 0.7em;
-        line-height: 24px;
+        font-size: 0.6em;
+        line-height: 18px;
     }
 
     .trending-card {
@@ -804,17 +778,9 @@
         height: 225px;    
     }
 
-    .discover-list {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-
-    .discover-card {
-        height: 225px;    
-    }    
-
-    .trending-overlay {
-        height: 80px;
-    }    
+    .discover-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .discover-card { height: 225px; }    
+    .trending-overlay { height: 80px; }    
 
     .trending-rank {
         font-size: 0.8em;
@@ -823,29 +789,13 @@
         left: 10px;
     }    
 
-    .trending-title {
-        font-size: 0.8em;
-    }
+    .trending-title     { font-size: 0.8em; }
+    .trending-genres    { font-size: 0.7em; }
+    .discover-title     { font-size: 0.8em; }
+    .discover-genres    { font-size: 0.7em; }
+    .discover-overview  { font-size: 0.5em; }        
 
-    .trending-genres {
-        font-size: 0.7em;
-    }
-
-    .discover-title {
-        font-size: 0.8em;
-    }
-
-    .discover-genres {
-        font-size: 0.7em;
-    }
-
-    .discover-overview {
-        font-size: 0.5em;
-    }        
-
-    .discover-card .discover-overlay {
-        height: 120px;  
-    }    
+    .discover-card .discover-overlay { height: 120px; }    
 
     .selected-card {
         min-width: 200px;  
@@ -861,13 +811,8 @@
         margin-right: 6em;
     }
     
-    .selected-title {
-        font-size: 1.2em;
-    }    
-
-    .btn-trailer {
-        font-size: 1em;
-    }
+    .selected-title { font-size: 1.2em; }    
+    .btn-trailer { font-size: 1em; }
 
     .btn-trailer-close {
         top: 230px;
@@ -875,8 +820,10 @@
     }    
 
     .btn.btn-theme {
-
         font-size: 0.8em;
         border-radius: 8px;
-    } 
+    }
+
+    .btn-next, .btn-prev { display: none; }
+    footer { font-size: 0.8em; }
 }

@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer>
             <div>
-                <span>Developed By billyjour</span>
+                <span>Developed by billyjour</span>
                 <a 
                     href="https://github.com/billyjour" 
                     target="_blank" 

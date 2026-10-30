@@ -808,8 +808,12 @@ footer div {
     .discover-card .discover-overlay { height: 120px; }    
 
     .selected-card {
-        min-width: 150px;  
+        width: 40px;  
         aspect-ratio: 2/3;
+    }
+
+    .selected-banner {
+        padding-top: 12em;
     }
         
     .selected-banner-desc {
